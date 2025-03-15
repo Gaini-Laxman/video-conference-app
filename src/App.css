@@ -1,0 +1,243 @@
+html {
+  overflow-x: hidden;
+}
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.home-container .video-container {
+  position: relative;
+  border-radius: 12px;
+  background-color: rgb(54, 54, 54);
+  width: 640px;
+  height: 360px;
+}
+
+/* .home-container .video-container video {
+  width: 640px;
+  height: 360px;
+} */
+
+.home-container .video-container .voice-detector {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 1.2rem;
+}
+
+.home-container .video-container .button-group {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.home-container .video-container .button-group button {
+  position: relative;
+  border-radius: 50%;
+  background-color: rgb(234, 67, 53);
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid rgb(234, 67, 53);
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.home-container .video-container .button-group button.on {
+  background-color: transparent;
+  border-color: white;
+}
+.home-container .video-container .button-group button.on:hover {
+  background-color: #fff5;
+}
+
+.home-container .video-container .button-group button:hover {
+  background-color: rgba(234, 67, 53, 0.85);
+}
+
+.home-container .video-container .button-group button svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.home-container .video-container .button-group button i {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #fa7b17;
+  color: white;
+  top: -0.1rem;
+  left: 2rem;
+  font-size: 0.7rem;
+  font-style: normal;
+}
+
+.home-container .action-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  padding-inline: 4rem;
+}
+
+.action-group h3 {
+  font-size: 1.6rem;
+  /* font-weight: 400; */
+  margin-bottom: -1rem;
+}
+
+.action-group p,
+.action-group input {
+  border: 1px solid #00adfd;
+  outline: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  /* width: 300px; */
+  font-size: 1.2rem;
+}
+
+.action-group input::placeholder {
+  font-size: 1rem;
+}
+.action-group input:focus {
+  border-color: #0083ff;
+}
+
+.action-group button {
+  font-size: 1rem;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+  width: 12rem;
+  background-color: #b1b1b1b1;
+  transition: 0.25s;
+}
+
+.action-group button:hover {
+  background-color: #b1b1b1;
+}
+
+.action-group .spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  margin: -4rem;
+}
+
+.voice-detector-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 4px;
+  gap: 2px;
+  background-color: #00adfd;
+  border-radius: 50%;
+  box-shadow: 1px 2px 4px #4448;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    height: 4px;
+  }
+  50% {
+    height: 12px;
+  }
+  100% {
+    height: 4px;
+  }
+}
+
+.voice-detector-container.loading i {
+  animation: scaleAnimation 0.4s infinite;
+}
+
+.voice-detector-container i {
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.room {
+  width: calc(100% - 6rem);
+  height: calc(100% - 6rem);
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+.room .videos {
+  background-color: rgb(54, 54, 54);
+  border-radius: 20px;
+  height: 80vh;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.room .chat {
+  height: 80vh;
+  width: 20rem;
+  min-width: 18rem;
+}
+
+@media screen and (max-width: 1142px) {
+  .home-container .video-container {
+    width: 56vw;
+    height: 31.5vw;
+  }
+  .room .chat {
+    position: absolute;
+    right: 3rem;
+    width: 322px;
+    border-radius: 1rem;
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: 942px) {
+  .home-container {
+    flex-direction: column;
+  }
+  .home-container .video-container {
+    width: 528px;
+    height: 287px;
+  }
+  .room {
+    padding: 8px;
+    width: calc(100% - 2.1rem);
+  }
+  .room .videos {
+    height: calc(100% - 1.2rem);
+  }
+  .room .chat {
+    right: 8px;
+    height: calc(100% - 96px);
+    transform: translateY(-40px);
+  }
+}
