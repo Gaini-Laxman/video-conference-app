@@ -12,8 +12,8 @@
   "dependencies": {
     "@ricky0123/vad-react": "^0.0.28",
     "peerjs": "^1.5.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.3.0",
     "react-spinners": "^0.15.0",
