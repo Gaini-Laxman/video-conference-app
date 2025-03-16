@@ -25,13 +25,14 @@ const Room = () => {
   const [micOn, setMicOn] = useState(false);
   const [videoOn, setVideoOn] = useState(false);
 
-  // Function to join the room after everything is ready
+  const SOCKET_SERVER = import.meta.env.VITE_SOCKET_SERVER_URL;
+  const PEER_SERVER = import.meta.env.VITE_PEER_SERVER_URL;
+
   const joinRoom = () => {
     if (!peer.current?.id) {
       console.warn("Peer ID is not ready yet.");
       return;
     }
-    console.log("Joining room with Peer ID:", peer.current.id);
     socket.current.emit("join-room", {
       roomId,
       peerId: peer.current.id,
@@ -40,15 +41,19 @@ const Room = () => {
   };
 
   useEffect(() => {
-    console.log("VITE_SOCKETIO_SERVER:", import.meta.env.VITE_SOCKETIO_SERVER);
-    console.log("VITE_PEERJS_SERVER:", import.meta.env.VITE_PEERJS_SERVER);
+    console.log("SOCKET SERVER:", SOCKET_SERVER);
+    console.log("PEER SERVER:", PEER_SERVER);
 
-    socket.current = io(import.meta.env.VITE_SOCKETIO_SERVER, {
+    // ✅ Connect to Socket.IO
+    socket.current = io(SOCKET_SERVER, {
       transports: ["websocket"],
     });
 
-    peer.current = new Peer(host ? roomId : v4(), {
-      host: "your-peerjs-server.vercel.app",
+    // ✅ Connect to PeerJS
+    const peerId = host ? roomId : v4();
+    peer.current = new Peer(peerId, {
+      host: PEER_SERVER.replace(/^wss?:\/\//, ""), // remove wss:// or ws://
+      port: 443,
       path: "/peerjs",
       secure: true,
     });
@@ -62,7 +67,6 @@ const Room = () => {
         setJoint(true);
       });
 
-      // Ensure permissions are checked before joining
       Promise.all([
         checkPermission("camera", setVideoOn),
         checkPermission("microphone", setMicOn),
