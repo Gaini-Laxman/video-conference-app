@@ -52,7 +52,7 @@ const Room = () => {
     // ✅ Connect to PeerJS
     const peerId = host ? roomId : v4();
     peer.current = new Peer(peerId, {
-      host: PEER_SERVER.replace(/^wss?:\/\//, ""), // remove wss:// or ws://
+      host: new URL(PEER_SERVER).hostname,
       port: 443,
       path: "/peerjs",
       secure: true,
