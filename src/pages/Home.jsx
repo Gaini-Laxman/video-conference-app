@@ -194,9 +194,9 @@ export const VoiceDetector = ({
     userSpeakingThreshold: 1,
     startOnLoad,
     baseAssetPath:
-      "https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.21/dist/",
+      "https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.22/dist/",
     onnxWASMBasePath:
-      "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/",
+      "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.3/dist/",
     minSpeechFrames: 1,
     onSpeechStart: () => {
       setLoading(true);

@@ -1,0 +1,3 @@
+const vad = await VAD.create({
+  modelPath: "/models/silero_vad_v5.onnx",
+});

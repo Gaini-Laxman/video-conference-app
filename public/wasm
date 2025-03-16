@@ -1,1 +1,2 @@
-node_modules/onnxruntime-web/dist/wasm/
+ort.env.wasm.wasmPaths = '/models/'; // or wherever you placed the WASM files
+await ort.InferenceSession.create('model.onnx');
